@@ -64,28 +64,57 @@
       </header>
 
       <main class="site-main">
-        <section class="page-section">
+        <section class="page-section webcam-page">
           <header class="page-header">
             <h1 class="page-title">摄像头追踪</h1>
             <p class="page-summary">允许浏览器访问摄像头后开始显示实时识别结果。</p>
           </header>
 
-          <section class="panel tracking-panel">
-            <div id="tracking-stage" class="tracking-stage">
-              <div class="stage-empty" data-empty-state>
-                <strong>等待摄像头权限</strong>
-                <span>授权后在这里显示实时画面与识别结果。</span>
+          <div class="workspace-grid webcam-workspace">
+            <aside class="sidebar-stack">
+              <section class="panel info-panel">
+                <h2 class="panel-heading">摄像头状态</h2>
+                <div id="webcam-status" class="result-summary result-summary--compact">
+                  <div class="result-card result-card--status">
+                    <div class="result-card__header">
+                      <span class="result-card__title">等待授权</span>
+                      <span class="status-pill">未连接</span>
+                    </div>
+                    <p class="result-card__meta">
+                      允许浏览器访问摄像头后，这里会同步显示连接与识别状态。
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel info-panel">
+                <h2 class="panel-heading">识别结果</h2>
+                <div id="webcam-results" class="result-summary">
+                  <div class="result-empty">
+                    <strong>等待识别</strong>
+                    <span>摄像头开始工作后，这里会同步显示表情识别结果副本。</span>
+                  </div>
+                </div>
+              </section>
+            </aside>
+
+            <section class="panel tracking-panel">
+              <div id="tracking-stage" class="tracking-stage">
+                <div class="stage-empty" data-empty-state>
+                  <strong>等待摄像头权限</strong>
+                  <span>授权后在这里显示实时画面与识别结果。</span>
+                </div>
+                <video
+                  id="video"
+                  width="1280"
+                  height="720"
+                  autoplay
+                  muted
+                  playsinline
+                ></video>
               </div>
-              <video
-                id="video"
-                width="1280"
-                height="720"
-                autoplay
-                muted
-                playsinline
-              ></video>
-            </div>
-          </section>
+            </section>
+          </div>
         </section>
       </main>
     </div>

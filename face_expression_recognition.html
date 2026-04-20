@@ -71,14 +71,26 @@
           </header>
 
           <div class="workspace-grid">
-            <aside class="panel control-panel">
-              <h2 class="panel-heading">上传图片</h2>
-              <input id="upload" type="file" accept="image/*" />
-              <label for="upload" class="upload-dropzone">
-                <span class="upload-label">选择图片</span>
-                <span class="upload-hint">建议使用清晰、正脸较明显的照片。</span>
-              </label>
-              <p class="panel-note">支持常见 JPG、PNG 图片格式。</p>
+            <aside class="sidebar-stack">
+              <section class="panel control-panel">
+                <h2 class="panel-heading">上传图片</h2>
+                <input id="upload" type="file" accept="image/*" />
+                <label for="upload" class="upload-dropzone">
+                  <span class="upload-label">选择图片</span>
+                  <span class="upload-hint">建议使用清晰、正脸较明显的照片。</span>
+                </label>
+                <p class="panel-note">支持常见 JPG、PNG 图片格式。</p>
+              </section>
+
+              <section class="panel info-panel">
+                <h2 class="panel-heading">识别结果</h2>
+                <div id="expression-results" class="result-summary">
+                  <div class="result-empty">
+                    <strong>等待识别</strong>
+                    <span>上传图片后，这里会同步显示表情识别结果副本。</span>
+                  </div>
+                </div>
+              </section>
             </aside>
 
             <section class="panel result-panel">
