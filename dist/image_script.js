@@ -1,16 +1,12 @@
 const imageUpload = document.getElementById("upload");
 const analysisStage = document.getElementById("analysis-stage");
+const MODEL_URL = "./models";
+const LABELED_IMAGE_PATH = "./public/img/labeled_images";
 
 Promise.all([
-  faceapi.nets.faceRecognitionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceLandmark68Net.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.ssdMobilenetv1.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
+  faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+  faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+  faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
 ]).then(start);
 
 async function start() {
@@ -75,7 +71,7 @@ function loadLabeledImages() {
 
       for (let i = 1; i <= 5; i += 1) {
         const img = await faceapi.fetchImage(
-          `https://raw.githubusercontent.com/willtrinh/face-recognition/master/public/img/labeled_images/${label}/${i}.jpg`
+          `${LABELED_IMAGE_PATH}/${label}/${i}.jpg`
         );
         const detections = await faceapi
           .detectSingleFace(img)

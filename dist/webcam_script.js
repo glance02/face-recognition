@@ -2,6 +2,7 @@ const video = document.getElementById("video");
 const trackingStage = document.getElementById("tracking-stage");
 const webcamStatus = document.getElementById("webcam-status");
 const webcamResults = document.getElementById("webcam-results");
+const MODEL_URL = "./models";
 let canvas;
 let detectionInterval;
 let lastResultsMarkup = "";
@@ -20,18 +21,10 @@ const EXPRESSION_ORDER = Object.keys(EXPRESSION_LABELS);
 const SIDEBAR_REFRESH_MS = 280;
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceLandmark68Net.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceRecognitionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceExpressionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
+  faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+  faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+  faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+  faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
 ]).then(startVideo);
 
 function getDisplaySize() {

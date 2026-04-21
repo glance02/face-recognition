@@ -1,6 +1,7 @@
 const imageUpload = document.getElementById("upload");
 const analysisStage = document.getElementById("analysis-stage");
 const expressionResults = document.getElementById("expression-results");
+const MODEL_URL = "./models";
 
 const EXPRESSION_LABELS = {
   neutral: "中性",
@@ -14,21 +15,11 @@ const EXPRESSION_LABELS = {
 const EXPRESSION_ORDER = Object.keys(EXPRESSION_LABELS);
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceLandmark68Net.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceRecognitionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceExpressionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.ssdMobilenetv1.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
+  faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+  faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+  faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+  faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+  faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL),
 ]).then(start);
 
 function formatPercent(value) {

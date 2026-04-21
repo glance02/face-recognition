@@ -1,21 +1,14 @@
 const video = document.getElementById("video");
 const trackingStage = document.getElementById("tracking-stage");
+const MODEL_URL = "./models";
 let canvas;
 let detectionInterval;
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceRecognitionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceLandmark68Net.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
-  faceapi.nets.faceExpressionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
-  ),
+  faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+  faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
+  faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+  faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
 ]).then(startVideo);
 
 function startVideo() {
